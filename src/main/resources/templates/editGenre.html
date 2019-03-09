@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Жанры</title>
+        <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/EditGenre.js"></script>
+    </head>
+    <body>
+        <h1>Редактировать жанр:</h1>
+        <p th:text="'Номер жанра: ' + ${id}"></p>
+        <form id="editForm">
+            <input type="hidden" id="editId" th:value="${id}"/>
+            Название:
+            <input type="text" id="name"/>
+            <br/>
+            <input type="submit" value="Сохранить" />
+        </form>
+        <form id="deleteForm">
+            <input type="hidden" id="deleteId" th:value="${id}"/>
+            <input type="submit" value="Удалить" />
+        </form>
+    </body>
+</html>

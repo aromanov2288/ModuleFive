@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Библиотека</title>
+        <link type="text/css"/>
+    </head>
+    <body>
+        <h1>Выберите раздел:</h1>
+        <h2>
+            <a th:href="@{/books/getAll}" th:method="GET">Книги</a>
+        </h2>
+        <h2>
+            <a th:href="@{/genres/getAll}" th:method="GET">Жанры</a>
+        </h2>
+    </body>
+</html>
