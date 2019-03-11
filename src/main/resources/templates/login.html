@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Войти</title>
+</head>
+<body>
+<h1>Введите логин и пароль:</h1>
+<h2 th:text="${mes}"></h2>
+<form th:action="@{/login}" th:object="${loginForm}" th:method="POST">
+    Логин:
+    <input type="text" name="userName" />
+    <br/>
+    Пароль:
+    <input type="text" name="password" />
+    <br/>
+    <input type="checkbox" name="remember-me-me"/>
+    <br/>
+    <input type="submit" value="Войти" />
+</form>
+</body>
+</html>

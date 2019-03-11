@@ -7,6 +7,10 @@
         <script type="text/javascript" src="/js/AllGenres.js"></script>
     </head>
     <body>
+        <h3 id="userInfo"></h3>
+        <h3>
+            <a th:href="@{/logout}" th:method="GET">Выйти</a>
+        </h3>
         <h1>Список жанров</h1>
         <h2>
             <a th:href="@{/genres/add}" th:method="GET">Добавить жанр</a>

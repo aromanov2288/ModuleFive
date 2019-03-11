@@ -2,10 +2,15 @@ package ru.romanov.modulefive.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -15,20 +20,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "user_role")
-    private String userRole;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> rolesSet;
 
     public User() {
     }
 
-    public User(String userName, String password, String userRole) {
+    public User(String name, String surname, String userName, String password, Set<Role> rolesSet) {
+        this.name = name;
+        this.surname = surname;
         this.userName = userName;
         this.password = password;
-        this.userRole = userRole;
+        this.rolesSet = rolesSet;
     }
 
     public Long getId() {
@@ -37,6 +55,22 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getUserName() {
@@ -55,11 +89,11 @@ public class User {
         this.password = password;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public Set<Role> getRolesSet() {
+        return rolesSet;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setRolesSet(Set<Role> rolesSet) {
+        this.rolesSet = rolesSet;
     }
 }

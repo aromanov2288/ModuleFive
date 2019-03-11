@@ -7,6 +7,9 @@
         <script type="text/javascript" src="/js/EditGenre.js"></script>
     </head>
     <body>
+        <h3>
+            <a th:href="@{/logout}" th:method="GET">Выйти</a>
+        </h3>
         <h1>Редактировать жанр:</h1>
         <p th:text="'Номер жанра: ' + ${id}"></p>
         <form id="editForm">

@@ -22,7 +22,6 @@ public class GenreRestController {
 
     private GenreRepository genreRepository;
 
-    @Autowired
     public GenreRestController(GenreRepository genreRepository) {
         this.genreRepository = genreRepository;
     }

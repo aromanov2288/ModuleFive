@@ -7,6 +7,9 @@
         <script type="text/javascript" src="/js/EditBook.js"></script>
     </head>
     <body>
+        <h3>
+            <a th:href="@{/logout}" th:method="GET">Выйти</a>
+        </h3>
         <h1>Редактировать книгу:</h1>
         <p th:text="'Номер книги: ' + ${id}"></p>
         <form id="editForm">

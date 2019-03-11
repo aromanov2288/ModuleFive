@@ -7,6 +7,10 @@
         <script type="text/javascript" src="/js/AllBooks.js"></script>
     </head>
     <body>
+        <h3 id="userInfo"></h3>
+        <h3>
+            <a th:href="@{/logout}" th:method="GET">Выйти</a>
+        </h3>
         <h1>Список книг</h1>
         <h2>
             <a th:href="@{/books/add}" th:method="GET">Добавить книгу</a>
