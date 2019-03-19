@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Книги</title>
+        <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/AllBooks.js"></script>
+    </head>
+    <body>
+        <h3 id="userInfo"></h3>
+        <h3>
+            <a th:href="@{/logout}" th:method="GET">Выйти</a>
+        </h3>
+        <h1>Список книг</h1>
+        <h2>
+            <a th:href="@{/books/add}" th:method="GET">Добавить книгу</a>
+        </h2>
+        <table class="books">
+            <thead>
+            <tr>
+                <th>Номер</th>
+                <th>Автор</th>
+                <th>Название</th>
+                <th>Жанр</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </body>
+</html>
