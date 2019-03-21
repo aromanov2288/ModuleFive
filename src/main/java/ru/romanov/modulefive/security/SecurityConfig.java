@@ -2,6 +2,7 @@ package ru.romanov.modulefive.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -36,7 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/index").permitAll()
-                .antMatchers("/webjars/**", "/js/**", "/books/**", "/genres/**", "/api/**").authenticated()
+                .antMatchers("/webjars/**", "/js/**").permitAll()
+                .antMatchers("/books/getAll", "/genres/getAll/").authenticated()
+                .antMatchers(HttpMethod.GET, "/api/books/", "/api/genres/").authenticated()
+                .antMatchers("/books/add", "/books/edit", "/genres/add", "/genres/edit").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/books", "/api/genres").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/books/*", "/api/genres/*").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/books", "/api/genres").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/books/*", "/api/genres/*").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
